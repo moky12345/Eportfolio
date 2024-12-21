@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karl Andre L. Gutierrez - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* Glitch effect */
+        @keyframes glitch {
+            0% { transform: translate(0) }
+            20% { transform: translate(-2px, 2px) }
+            40% { transform: translate(-2px, -2px) }
+            60% { transform: translate(2px, 2px) }
+            80% { transform: translate(2px, -2px) }
+            100% { transform: translate(0) }
+        }
+
+        /* Header Styles */
+        header {
+            background: #111;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            padding: 0 2rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: #fff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, #000, #111);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255,255,255,0.1) 0px,
+                rgba(255,255,255,0.1) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: glitch 5s infinite;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        /* About Me Section */
+        .about {
+            padding: 4rem 2rem;
+            background: #111;
+            text-align: center;
+        }
+
+        .about img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-bottom: 1rem;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            color: #888;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Project Section */
+        .projects {
+            padding: 4rem 2rem;
+            background: #111;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .project-card {
+            background: #000;
+            padding: 1.5rem;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateX(-100%) }
+            100% { transform: translateX(100%) }
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .project-card p {
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .project-card .tech-stack {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background: #000;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .contact button {
+            background: #fff;
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>KARL ANDRE L. GUTIERREZ</h1>
+            <h2>Computer Science Student | Developer</h2>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+         <img src="images/profile.jpg" alt="Karl Andre L. Gutierrez" alt="Karl Andre L. Gutierrez">
+        <h2>About Me</h2>
+        <p>Hello! I'm Karl Andre L. Gutierrez, a Computer Science student driven by an insatiable curiosity for technology and a desire to make meaningful contributions through my work. I am passionate about solving real-world problems, creating innovative software solutions, and bringing ideas to life that improve everyday experiences. Whether it’s through developing user-friendly apps or diving deep into complex programming challenges, I enjoy the process of building tools that empower others. With a keen interest in both individual and collaborative projects, I believe that great innovations come from a blend of creativity, persistence, and teamwork. Let’s collaborate and create something extraordinary together!</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>PROJECTS</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Basic Calculator</h3>
+                <p>A Python-based calculator with a clean interface, handling basic arithmetic operations with precision and error handling.</p>
+                <div class="tech-stack">Python | GUI Development</div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Horror Story Game</h3>
+                <p>An immersive text-based adventure game that takes players through a spine-chilling narrative with multiple endings.</p>
+                <div class="tech-stack">Python | Game Design | Storytelling</div>
+            </div>
+            
+            <div class="project-card">
+                <h3>Inventory Management System</h3>
+                <p>A robust system for tracking and managing inventory with real-time updates and data persistence.</p>
+                <div class="tech-stack">Python | Database Management</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>CONTACT</h2>
+        <form>
+            <input type="text" placeholder="NAME" required>
+            <input type="email" placeholder="EMAIL" required>
+            <textarea placeholder="MESSAGE" rows="5" required></textarea>
+            <button type="submit">SEND MESSAGE</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.facebook.com/andre.aez.31" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/karlseeefnii/" target="_blank">Instagram</a>
+            <a href="https://github.com/moky12345" target="_blank">GitHub</a>
+        </div>
+        <p>&copy; 2024 KARL ANDRE L. GUTIERREZ</p>
+    </footer>
+</body>
+</html>
